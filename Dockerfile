@@ -11,4 +11,4 @@ COPY . .
 COPY docker/docker.env .env
 
 EXPOSE 3000
-CMD [ "pm2", "start", "npm", "-- start" ]
+CMD [ "pm2", "start", "npm -- start" ]
