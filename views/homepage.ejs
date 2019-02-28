@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <title>OAuth2Server |
+    <%= pageName %>
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Custom styles for this template -->
+</head>
+
+<body>
+  <header>
+    <% include partials/header.ejs %>
+  </header>
+  <main role="main" class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-3 mb-2">
+        <a class="btn btn-block btn-lg btn-primary text-center" href="/users/profile"> Profile</a>
+      </div>
+      <div class="col-lg-3">
+        <a class="btn btn-block btn-lg btn-secondary text-center" href="/logout"> Logout </a>
+      </div>
+    </div>
+  </main><!-- /.container -->
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>OAuth2Server |
+        <%= pageName %>
+    </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- Custom styles for this template -->
+</head>
+
+
+<body>
+
+
+    <form class="form-custom" method="POST" action="/register">
+        <!-- <img class="mb-4" src="/images/waverley-logo.png" alt="" width="100%" height="20%"> -->
+        <div class="row justify-content-center mt-auto mb-3">
+            <h2> Register a new account </h2>
+        </div>
+        <% if(!(message.error === undefined || message.error == 0)) { %>
+        <div class="row mt-auto mb-3 alert alert-danger">
+            <div class="col-md-11">
+                <p><strong>Error! </strong>
+                    <%= message.error %>
+                </p>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        </div>
+        <% } %>
+        <% if (userReq) { %>
+        <div class="form-label-group">
+            <input type="text" id="inputfn" name="firstname" class="form-control" placeholder="First Name" required
+                autofocus value="<%= userReq.firstname %>">
+            <label class="form-lable" for="inputfn">First Name</label>
+        </div>
+        <div class="form-label-group">
+            <input type="text" id="inputln" name="lastname" class="form-control" placeholder="Last Name" required
+                autofocus value="<%= userReq.lastname %>">
+            <label class="form-lable" for="inputln">Last Name</label>
+        </div>
+        <div class="form-label-group">
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+                autofocus value="<%= userReq.email %>">
+            <label class="form-lable" for="inputEmail">Email address</label>
+        </div>
+        <% } else { %>
+        <div class="form-label-group">
+            <input type="text" id="inputfn" name="firstname" class="form-control" placeholder="First Name" required
+                autofocus>
+            <label class="form-lable" for="inputfn">First Name</label>
+        </div>
+        <div class="form-label-group">
+            <input type="text" id="inputln" name="lastname" class="form-control" placeholder="Last Name" required
+                autofocus>
+            <label class="form-lable" for="inputln">Last Name</label>
+        </div>
+        <div class="form-label-group">
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+                autofocus>
+            <label class="form-lable" for="inputEmail">Email address</label>
+        </div>
+        <% } %>
+        <div class="form-label-group">
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+                required>
+            <label class="form-lable" for="inputPassword">Password</label>
+        </div>
+        <div class="form-label-group">
+            <input type="password" id="inputConfirmPassword" name="confirm_password" class="form-control" placeholder="Password confirmation"
+                required>
+            <label class="form-lable" for="inputConfirmPassword">Password confirmation</label>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">Register</button>
+        <a class="btn btn-primary btn-block" href="/">Back</a>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+    </form>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <footer>
+        <% include partials/footer.ejs %>
+    </footer>
+</body>
+
+</html>

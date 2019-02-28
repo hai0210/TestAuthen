@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>OAuth2Server |
+        <%= pageName %>
+    </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+    <div class="container">
+        <form class="form-custom" method="POST" action="/login">
+            <!-- <img class="mb-4" src="/images/waverley-logo.png" alt="" width="100%" height="20%"> -->
+            <div class="row justify-content-center mt-auto mb-3">
+                <h2> Login </h2>
+            </div>
+            <% if(!(message.error === undefined || message.error == 0)) { %>
+            <div class="row mt-auto mb-3 alert alert-danger">
+                <div class="col-md-11">
+                    <p><strong>Error! </strong>
+                        <%= message.error %>
+                    </p>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            </div>
+            <% } %>
+            <div class="row form-label-group">
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
+                    required autofocus>
+                <label class="form-lable" for="inputEmail">Email address</label>
+            </div>
+
+            <div class="row form-label-group">
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+                    required>
+                <label class="form-lable" for="inputPassword">Password</label>
+            </div>
+            <div class="row form-label-group">
+                <label class="form-lable" for="inputShowPassword">Show Password</label>
+                <input type="checkbox" onclick="showPasssword()" id="inputShowPassword">
+
+            </div>
+
+            <div class="row">
+                <button class="btn btn-primary btn-block" type="submit">Login</button>
+            </div>
+            <a href='/register'>Register a new account </a> <br>
+            <a href='/resetpassword'> Forgot your password? </a>
+        </form>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+</body>
+<script>
+    function showPasssword() {
+        const pwdField = document.getElementById('inputPassword');
+        if (pwdField.type === "password") {
+            pwdField.type = "text";
+        } else {
+            pwdField.type = "password";
+        }
+    }
+</script>
+
+</html>

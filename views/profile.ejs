@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <title>OAuth2Server |
+    <%= pageName %>
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Custom styles for this template -->
+</head>
+
+
+<body>
+
+  <% include partials/header.ejs %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 border-0 justify-content-center mt-5">
+        <div class="card">
+          <div class="card-body table-responsive">
+            <h5 class="card-title">
+              <%= user.fullname %>
+            </h5>
+            <table class="table table-borderless mb-1">
+              <tbody>
+                <tr class="table-light">
+                  <th scope="row">First Name:</th>
+                  <td>
+                    <%= user.firstname %>
+                  </td>
+                </tr>
+                <tr class="table-light">
+                  <th scope="row">Last Name:</th>
+                  <td>
+                    <%= user.lastname %>
+                  </td>
+                </tr>
+                <tr class="table-light">
+                  <th scope="row">Email:</th>
+                  <td>
+                    <%= user.email %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Edit user profile</h5>
+
+            <form class="form-custom" method="POST" action="/users/edit">
+              <% if (message) { %>
+              <% if (!(message.success === undefined || message.success == 0)) { %>
+              <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                <p><strong>Sucess: </strong>
+                  <%= message.success %>
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <% } %>
+              <% if(!(message.error === undefined || message.error == 0)) { %>
+              <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                <p><strong>Error: </strong>
+                  <%= message.error %>
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <% } %>
+              <% } %>
+              <!-- <img class="mb-4" src="/images/waverley-logo.png" alt="" width="100%" height="20%"> -->
+              <div class="form-label-group">
+                <input type="hidden" name="userid" class="form-control" value="<%= user._id %>">
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="inputfn" name="firstname" class="form-control" placeholder="First Name" required
+                  value="<%= user.firstname %>">
+                <label class="form-lable" for="inputfn">First Name</label>
+              </div>
+              <div class="form-label-group">
+                <input type="text" id="inputln" name="lastname" class="form-control" placeholder="Last Name" required
+                  value="<%= user.lastname %>">
+                <label class="form-lable" for="inputln">Last Name</label>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-sm-3">
+                  <button class="btn btn-block btn-primary" type="submit">Save</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2 justify-content-end">
+      <div class="col-lg-7">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Change Password</h5>
+            <form class="form-custom" method="POST" action="/users/changepassword">
+              <% if (message) { %>
+              <% if (!(message.successPwd === undefined || message.successPwd == 0)) { %>
+              <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                <p><strong>Sucess: </strong>
+                  <%= message.successPwd %>
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <% } %>
+              <% if(!(message.errorPwd === undefined || message.errorPwd == 0)) { %>
+              <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                <p><strong>Error: </strong>
+                  <%= message.errorPwd %>
+                </p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <% } %>
+              <% } %>
+              <div class="form-label-group">
+                <input type="hidden" name="userid" class="form-control" value="<%= user._id %>">
+              </div>
+              <div class="form-label-group">
+                <input type="password" id="inputCurrentPassword" name="current_password" class="form-control"
+                  placeholder="Current password" required>
+                <label class="form-lable" for="inputCurrentPassword">Current Password</label>
+              </div>
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="New password"
+                  required>
+                <label class="form-lable" for="inputPassword">New Password</label>
+              </div>
+              <div class="form-label-group">
+                <input type="password" id="inputConfirmPassword" name="confirm_password" class="form-control"
+                  placeholder="New password confirmation" required>
+                <label class="form-lable" for="inputConfirmPassword">Confirmation New Password</label>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-sm-3">
+                  <button class="btn btn-block btn-primary" type="submit">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div><!-- /.container -->
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+</body>
+
+</html>

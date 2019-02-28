@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>OAuth2Server |
+        <%= pageName %>
+    </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- Custom styles for this template -->
+</head>
+
+
+<body onload="update()">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <form action='/v1/oauth2/decision' method='POST'>
+                <div class="row justify-content-center">
+                    <h1>
+                        Connect with
+                        <%= application.title %>
+                    </h1>
+                </div>
+                <input type=hidden name='transaction_id' value='<%= transaction_id %>'>
+                <input type=hidden name='response_type' value='<%= response_type %>'>
+                <input type=hidden name='client_id' value='<%= application.oauth_id %>'>
+                <input type=hidden name='auth_url' value='<%= currentURL %>'>
+                <p>
+                    <%= application.title %> requires permission to
+
+                    <strong> - view your profile </strong>
+
+                </p>
+                <p class="text-center"> Signed in as <strong>
+                        <%= user.email %></strong></p>
+                <div class="row justify-content-center">
+                    <a href='#' id="logout">
+                        Not
+                        <%= user.email %>
+                    </a>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Authorize</button>
+                <button class="btn btn-lg btn-secondary btn-block" type="submit" value="Deny" name="cancel" id="deny">Deny</button>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <footer>
+        <% include partials/footer.ejs %>
+    </footer>
+
+</body>
+<script>
+    function update() {
+        document.getElementById("logout").href = "/logout?next=" + window.location.href;
+    }
+</script>
+
+</html>
