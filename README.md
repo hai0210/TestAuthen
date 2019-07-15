@@ -9,8 +9,8 @@ wvn-oauth2 is an OAuth2 Server in [Node.js](https://nodejs.org) based on [OAuth2
 ## Installation
 ### Without docker
 ```bash
-git clone https://github.com/WaverleySoftware/wvn_RnD.git
-cd wvn_RnD/Personal/huytruong/OAuth2server
+git clone https://github.com/hai0210/TestAuthen
+
 npm install
 ```
 For wvn-rnd team. Please contact me to add new application to test your application or if you needed my guide.
